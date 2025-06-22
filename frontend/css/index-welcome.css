@@ -1,21 +1,76 @@
 * {
-    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat;
 }
 
 #login {
     min-height: 100vh;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-login {
     position: relative;
     z-index: 2; /*Place the container on top of the others*/
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1.5px solid rgb(107, 107, 107);
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+
+.box-login p {
+    color: #ffffff96;
 }
 
 .box-login h1 {
     color: white;
 }
 
+.box-data-login {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#name-input {
+    color: white;
+    padding: 0.3rem;
+    width: 60%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(107, 107, 107);
+    font-size: 15px;
+}
+
+.box-data-login button {
+    padding: 0.5rem;
+    cursor: pointer;
+    background-color: white;
+    color: #555;
+    border: 1.5px solid rgb(92, 92, 92);
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.box-data-login button:hover {
+    transform: scale(1.1);
+}
+
+.box-data-login button:active {
+    transform: scale(0.9);
+}
+
+#name-input::placeholder {
+    color: #ddd;
+}
 
 video {
     position: absolute;
