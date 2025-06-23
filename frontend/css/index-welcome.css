@@ -48,6 +48,15 @@
     font-size: 15px;
 }
 
+#name-input::placeholder {
+    color: #ddd;
+}
+
+#name-input:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
 .box-data-login button {
     padding: 0.5rem;
     cursor: pointer;
@@ -66,10 +75,6 @@
 
 .box-data-login button:active {
     transform: scale(0.9);
-}
-
-#name-input::placeholder {
-    color: #ddd;
 }
 
 video {
