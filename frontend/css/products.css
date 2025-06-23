@@ -40,27 +40,32 @@
 
 .btns-section a {
     color: white;
+    text-decoration: none;
+}
+
+.btns-section i {
+    margin: 0px 5px;
 }
 
 #selected-section {
-    color: gray;
+    color: #a89c7d;
 }
 
-h2 {
+#text-categories {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 3rem;
 }
 
-#card-products {
+#card-categories {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 3rem;
     gap: 20px;
 }
 
-.skate {
+.card-skate {
     width: 20%;
     overflow: hidden;
     display: flex;
@@ -71,9 +76,10 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
+    padding: 2rem 0;
 }
 
-.rollers {
+.card-rollers {
     width: 20%;
     display: flex;
     justify-content: center;
@@ -83,17 +89,18 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
+    padding: 2rem 0;
 }
 
-.skate:hover, .rollers:hover {
+.card-skate:hover, .card-rollers:hover {
     transform: scale(1.08);
 }
 
-.skate:active, .rollers:active{
+.card-skate:active, .card-rollers:active{
     transform: scale(0.9);
 }
 
-.skate img, .rollers img {
+.card-skate img, .card-rollers img {
     max-height: 200px;
     width: auto;
 }
