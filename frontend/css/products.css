@@ -1,0 +1,99 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat;
+}
+
+.msg-discount {
+    text-align: center;
+    background-color: black;
+
+}
+
+.msg-discount h3 {
+    color: white;
+    font-size: 15px;
+    padding: 5px;
+}
+
+
+.header img {
+    width: 6%;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.btns-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: black;
+    padding: 10px;
+}
+
+.btns-section a {
+    color: white;
+}
+
+#selected-section {
+    color: gray;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#card-products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 70px;
+    gap: 20px;
+}
+
+.skate {
+    width: 20%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.rollers {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.skate:hover, .rollers:hover {
+    transform: scale(1.08);
+}
+
+.skate:active, .rollers:active{
+    transform: scale(0.9);
+}
+
+.skate img, .rollers img {
+    max-height: 200px;
+    width: auto;
+}
