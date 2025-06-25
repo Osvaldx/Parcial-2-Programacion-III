@@ -1,6 +1,7 @@
 import express from "express";
 import environments from "./src/api/config/environments.js";
 import connection from "./src/api/database/db.js";
+import parametersValidation from "./src/api/validations/serverValidations.js";
 import cors from "cors";
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json()); // MIDDLEWARE PARA PODER RECIBIR COSAS DEL BODY EN EL P
 // GET PRODUCTS
 try {
     app.get("/products", async(req, res) => {
+        console.log(`   GET ./products`)
         let sql = "SELECT * FROM productos"
         const [rows] = await connection.query(sql);
         
@@ -28,11 +30,11 @@ catch(error) {
     console.log("Error: " + error)
 }
 
-// GET PRODUCTS ID
-
+// GET PRODUCT ID
 try {
     
     app.get("/products/:id", async(req,res) => {
+        console.log(`   GET ./products/id`)
         let sql = "SELECT * FROM productos WHERE id_product = ?" //-> se usa ? pq al poner el parametro "id" es vulnerable a sqlinjections
         let { id } = req.params  //-> desestructuracion a un objeto
         const [rows] = await connection.query(sql, [id]);
@@ -48,27 +50,32 @@ try {
     console.log("Error: " + error)
 }
 
-// INSERT PRODUCTS
+// INSERT PRODUCT
 try {
     app.post("/addproduct", async(req, res) => {
+        console.log(`   POST ./addproduct`)
         let { nombre, imagen, precio, categoria, activo } = req.body
-        
-        let sql = `INSERT INTO productos (nombre, imagen, precio, categoria, activo) VALUES 
-                (?, ?, ?, ?, ?)
-        `
+        let sql = `INSERT INTO productos (nombre, imagen, precio, categoria, activo) VALUES (?, ?, ?, ?, ?)`
+
+        let results = parametersValidation(nombre, imagen, precio, categoria)
+        if(!results.allow) {
+            return res.status(400).json({
+                error: results.message
+            })
+        }
+
         const [rows] = await connection.query(sql, [nombre, imagen, precio, categoria, activo])
         
-        res.status(200).json({
+        return res.status(200).json({
             message: (rows.length === 0) ? "[-] NO SE AGREGO EL PRODUCTO" : "[+] PRODUCTO AGREGADO"
         })
-        
     })
 } catch (error) {
     res.status(500).json({error: "[!] ERROR INTERNO DEL SERVIDOR"})
     console.log("Error: " + error)
 }
 
-
+// DELETE PRODUCT
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}/`)
