@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .box-login {
@@ -94,4 +95,33 @@ video {
     height: 100%;
     background: black;
     opacity: 0.5;
+}
+
+.btn-admin {
+    position: fixed;
+    z-index: 2;
+    bottom: 20px;
+    right: 20px;
+    padding: 0.5rem 1rem;
+    background-color: #dddddd3f;
+    color: #b4b4b4;
+    border: 1.5px solid rgb(92, 92, 92);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-admin:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.btn-admin:active {
+    transform: scale(0.9);
+}
+
+.btn-admin a {
+    text-decoration: none;
+    color: inherit;
 }
