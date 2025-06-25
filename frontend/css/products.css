@@ -1,7 +1,7 @@
 /* ========== RESET ========== */
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: Montserrat;
 }
 
@@ -50,7 +50,8 @@
 }
 
 #selected-section {
-    color: #a89c7d;
+    color: #d39242;
+    font-weight: bold;
 }
 
 /* ========== CATEGORÍAS ========== */
@@ -100,21 +101,25 @@
     transform: scale(0.9);
 }
 
-/* ========== PRODUCTOS SKATES ========== */
-#products-skates {
+/* ========== PRODUCTOS ========== */
+#products-skates, #products-roller {
     margin: 2rem;
 }
 
-#list {
-    width: 100%;
+
+#list-skate, #list-rollers{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
+    padding: 0 15px;
     margin: 0.8rem;
     list-style-type: none;
+    box-sizing: border-box;
 }
+
+
 
 .style-products {
     width: 250px;
@@ -126,11 +131,25 @@
     text-align: center;
     padding: 0.6rem;
     gap: 5px;
-    cursor: pointer;
-    border: 1px solid #a89c7d;
+    border: 1px solid #d98e32;
     border-radius: 10px;
     transition: all 0.3 ease;
     box-sizing: border-box;
+}
+
+.style-products button {
+    padding: 5px;
+    background: #ececec;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.style-products button:hover{
+    background-color: #d98e32;
 }
 
 .style-products img {
