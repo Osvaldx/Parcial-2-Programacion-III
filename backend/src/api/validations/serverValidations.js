@@ -36,4 +36,9 @@ const parametersValidation = (nombre,imagen,precio,categoria) => {
     return result
 }
 
-export default parametersValidation;
+const isParameter = (param) => {
+    const parameters = ["nombre","imagen","precio","categoria","activo"];
+    return (parameters.includes(param))
+}
+
+export default { parametersValidation,isParameter };
