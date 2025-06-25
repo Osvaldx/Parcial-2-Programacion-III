@@ -75,7 +75,30 @@ try {
     console.log("Error: " + error)
 }
 
+// ------------------------------------------------------------------------------------------ //
 // DELETE PRODUCT
+try {
+    app.delete("/deleteproduct/:id", async(req, res) => {
+        let { id } = req.params;
+        let sql = "DELETE FROM productos WHERE id_product = ?";
+        let [rows] = await connection.query(sql, [id]);
+
+        if(rows.affectedRows === 0) {
+            return res.status(400).json({
+                message: "[!] No existe producto con esa ID"
+            });
+        } else {
+            return res.status(200).json({
+                message: "[+] Producto eliminado"
+            });
+        }
+    })
+
+} catch (error) {
+    res.status(500).json({error: "[!] ERROR INTERNO DEL SERVIDOR"})
+    console.log("Error: " + error)
+}
+// ------------------------------------------------------------------------------------------ //
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}/`)
