@@ -104,3 +104,79 @@
     max-height: 200px;
     width: auto;
 }
+
+#products-skates{
+    margin: 2rem;
+}
+
+
+#skate{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style-type: none;
+    margin: 0.8rem;
+}
+
+.skates-list img {
+    width: 85%;
+}
+
+.skates-list {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.6rem;
+    gap: 5px;
+    cursor: pointer;
+    border: 1px solid #a89c7d;
+    border-radius: 10px;
+    transition: 1.1s;
+}
+
+.skates-list:hover {
+    transform: scale(0.9);
+}
+
+.banner-scroll {
+    background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+    padding: 20px;
+    text-align: center;
+    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.banner-scroll .banner-content p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.banner-scroll .icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.banner-scroll .icons img {
+    width: 60px;
+    animation: float 2s infinite ease-in-out; 
+/* float: es el nombre de la animación (la definida con @keyframes float).
+2s: la duración completa de la animación (subir y bajar) es de 2 segundos.
+infinite: se repite para siempre.
+ease-in-out: hace que el movimiento comience y termine suave, no abrupto. */
+}
+
+/* Animación simple */
+@keyframes float {
+    0% { transform: translateY(0px); } /* 0%: el elemento está en su posición original. */
+    50% { transform: translateY(-10px); } /* 50%: sube 10 píxeles hacia arriba (translateY(-10px)).*/
+    100% { transform: translateY(0px); } /* 100%: vuelve a su posición original. */
+}
