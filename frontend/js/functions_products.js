@@ -3,11 +3,33 @@
 ////////////////////////
 let skateListElement = document.getElementById("list-skate");
 let rollerListElement = document.getElementById("list-rollers");
+let cardSkate = document.getElementById("go-skates")
+let productSkate = document.getElementById("products-skates")
+let cardRollers = document.getElementById("go-rollers")
+let productRoller = document.getElementById("products-roller")
+
+
+///////////////
+// EVENTS //
+///////////////
+
+cardSkate.addEventListener("click", function() {
+    productSkate.scrollIntoView({behavior:'smooth' });
+    
+});
+
+cardRollers.addEventListener("click", function() {
+    productRoller.scrollIntoView({behavior: 'smooth'})
+    
+})
 
 
 ///////////////
 // FUNCTIONS //
 ///////////////
+
+
+
 const getProductsAPI = async () => {
     let response = await fetch("http://localhost:3000/products");
     let data = await response.json();
