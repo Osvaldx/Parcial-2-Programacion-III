@@ -105,6 +105,7 @@
 /* ========== PRODUCTOS ========== */
 #products-skates, #products-roller {
     margin: 2rem;
+    height: 100vh;
 }
 
 
@@ -117,8 +118,25 @@
     padding: 0 15px;
     margin: 0.8rem;
     list-style-type: none;
+    animation: fadeInUp 0.8s ease-out both;
+    /* ease-out → curva de velocidad: empieza rápido y termina suave
+    both → indica que la animación aplica tanto antes de empezar como después de terminar */
+    animation-timeline: view(); /*Es para que la animación se active cuando el elemento entra en la pantalla (scroll trigger).*/
+    animation-range: entry 0% cover 40%; /*Controla cuándo empieza la animación, mientras se va viendo en pantalla.*/
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /*Empieza transparente, no se ve*/
+        transform: translateY(20px) scale(0.9); /*empieza 20px más abajo (como que "sube" cuando aparece).
+        scale(0.9); → empieza un poquito más chiquito.*/
+    }
+    to {
+        opacity: 1; /*Termina visible*/
+        transform: translateY(0) scale(1); /*vuelve a su posición normal (sin desplazamiento).
+        scale(1); → vuelve a tamaño normal. */
+    }
+}
 
 
 .style-products {
