@@ -35,7 +35,9 @@ const showProduct = (ElementShow, productList) => {
         let product = productList[i];
         productsViews += `
         <li class="style-products">
-            <img src="${product.imagen}" alt="[!] Img product">
+            <div class = "image-box">
+            <img src="${product.imagen}" alt="[!] Img product">          
+            </div>
             <h3>${product.nombre}</h3>
             <p>$${product.precio}</p>
             <button>Agregar al carrito</button>
