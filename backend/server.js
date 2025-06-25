@@ -1,8 +1,8 @@
 import express from "express";
 import environments from "./src/api/config/environments.js";
 import connection from "./src/api/database/db.js";
-import parametersValidation from "./src/api/validations/serverValidations.js";
 import cors from "cors";
+import validations from "./src/api/validations/serverValidations.js"
 
 const app = express();
 const PORT = environments.port;
@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.json()); // MIDDLEWARE PARA PODER RECIBIR COSAS DEL BODY EN EL POST
 
 
+// ------------------------------------------------------------------------------------------ //
 // GET PRODUCTS
 try {
     app.get("/products", async(req, res) => {
@@ -29,7 +30,9 @@ catch(error) {
     res.status(500).json({error: "[!] Error interno del servidor al obtener productos"})
     console.log("Error: " + error)
 }
+// ------------------------------------------------------------------------------------------ //
 
+// ------------------------------------------------------------------------------------------ //
 // GET PRODUCT ID
 try {
     
@@ -49,7 +52,9 @@ try {
     res.status(500).json({error: "[!] Error interno del servidor al obtener productos"})
     console.log("Error: " + error)
 }
+// ------------------------------------------------------------------------------------------ //
 
+// ------------------------------------------------------------------------------------------ //
 // INSERT PRODUCT
 try {
     app.post("/addproduct", async(req, res) => {
@@ -57,9 +62,9 @@ try {
         let { nombre, imagen, precio, categoria, activo } = req.body
         let sql = `INSERT INTO productos (nombre, imagen, precio, categoria, activo) VALUES (?, ?, ?, ?, ?)`
 
-        let results = parametersValidation(nombre, imagen, precio, categoria)
+        let results = validations.parametersValidation(nombre, imagen, precio, categoria);
         if(!results.allow) {
-            return res.status(400).json({
+            return res.status(404).json({
                 error: results.message
             })
         }
@@ -74,6 +79,7 @@ try {
     res.status(500).json({error: "[!] ERROR INTERNO DEL SERVIDOR"})
     console.log("Error: " + error)
 }
+// ------------------------------------------------------------------------------------------ //
 
 // ------------------------------------------------------------------------------------------ //
 // DELETE PRODUCT
@@ -84,7 +90,7 @@ try {
         let [rows] = await connection.query(sql, [id]);
 
         if(rows.affectedRows === 0) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "[!] No existe producto con esa ID"
             });
         } else {
@@ -99,7 +105,42 @@ try {
     console.log("Error: " + error)
 }
 // ------------------------------------------------------------------------------------------ //
+try {
+    app.put("/modifiedProduct/:id/:param/:value", async(req, res) => {
+        let { id, param, value } = req.params;
+
+        if(!validations.isParameter(param)){
+            return res.status(404).json({
+                error: "[!] Parametro a modificar no valido"
+            });
+        }
+
+        if(!value) {
+            return res.status(404).json({
+                error: "[!] El valor del parametro no puede ser null o vacio"
+            });
+        }
+
+        let sql = `UPDATE productos SET ${param} = ? WHERE id_product = ?`
+        let [rows] = await connection.query(sql, [value,id])
+
+        if(rows.affectedRows === 0) {
+            return res.status(404).json({
+                message: "[!] No se pudo modificar el producto"
+            });
+        } else {
+            return res.status(200).json({
+                message: "[+] Producto modificado"
+            });
+        }
+    })
+
+} catch (error) {
+    res.status(500).json({error: "[!] ERROR INTERNO DEL SERVIDOR"})
+    console.log("Error: " + error)
+}
+// ------------------------------------------------------------------------------------------ //
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}/`)
-})
+});
