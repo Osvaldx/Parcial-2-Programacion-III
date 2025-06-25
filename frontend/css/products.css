@@ -1,13 +1,14 @@
+/* ========== RESET ========== */
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-family: Montserrat;
 }
 
+/* ========== MENSAJE DESCUENTO ========== */
 .msg-discount {
     text-align: center;
     background-color: black;
-
 }
 
 .msg-discount h3 {
@@ -16,11 +17,7 @@
     padding: 5px;
 }
 
-
-.header img {
-    width: 6%;
-}
-
+/* ========== HEADER ========== */
 .header {
     display: flex;
     justify-content: center;
@@ -29,6 +26,11 @@
     margin: 20px;
 }
 
+.header img {
+    width: 6%;
+}
+
+/* ========== NAV ========== */
 .btns-section {
     display: flex;
     justify-content: center;
@@ -44,13 +46,14 @@
 }
 
 .btns-section i {
-    margin: 0px 5px;
+    margin: 0 5px;
 }
 
 #selected-section {
     color: #a89c7d;
 }
 
+/* ========== CATEGORÍAS ========== */
 #text-categories {
     text-align: center;
     margin-top: 3rem;
@@ -60,13 +63,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     margin-top: 3rem;
     gap: 20px;
 }
 
-.card-skate {
+.card-skate, .card-rollers {
     width: 20%;
+    min-width: 150px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -77,29 +82,6 @@
     cursor: pointer;
     transition: 0.5s;
     padding: 2rem 0;
-    min-width: 150px;
-}
-
-.card-rollers {
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 2px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    padding: 2rem 0;
-    min-width: 150px;
-}
-
-.card-skate:hover, .card-rollers:hover {
-    transform: scale(1.08);
-}
-
-.card-skate:active, .card-rollers:active{
-    transform: scale(0.9);
 }
 
 .card-skate img, .card-rollers img {
@@ -110,31 +92,36 @@
     object-fit: contain;
 }
 
-#products-skates{
+.card-skate:hover, .card-rollers:hover {
+    transform: scale(1.08);
+}
+
+.card-skate:active, .card-rollers:active {
+    transform: scale(0.9);
+}
+
+/* ========== PRODUCTOS SKATES ========== */
+#products-skates {
     margin: 2rem;
 }
 
-
-#list{
+#list {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    list-style-type: none;
-    margin: 0.8rem;
     flex-wrap: wrap;
-}
-
-.style-products img {
-    width: 85%;
+    gap: 15px;
+    margin: 0.8rem;
+    list-style-type: none;
 }
 
 .style-products {
-    width: 20%;
+    width: 250px;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 0.6rem;
@@ -142,13 +129,22 @@
     cursor: pointer;
     border: 1px solid #a89c7d;
     border-radius: 10px;
-    transition: 1.1s;
+    transition: all 0.3 ease;
+    box-sizing: border-box;
+}
+
+.style-products img {
+    max-height: 250px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .style-products:hover {
-    transform: scale(0.9);
+    transform: translateY(-5px); /*sube un poco la box */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* ========== BANNER SCROLL ========== */
 .banner-scroll {
     background: linear-gradient(to right, #f0f0f0, #e0e0e0);
     padding: 20px;
@@ -173,16 +169,12 @@
 
 .banner-scroll .icons img {
     width: 60px;
-    animation: float 2s infinite ease-in-out; 
-/* float: es el nombre de la animación (la definida con @keyframes float).
-2s: la duración completa de la animación (subir y bajar) es de 2 segundos.
-infinite: se repite para siempre.
-ease-in-out: hace que el movimiento comience y termine suave, no abrupto. */
+    animation: float 2s infinite ease-in-out;
 }
 
 /* Animación simple */
 @keyframes float {
-    0% { transform: translateY(0px); } /* 0%: el elemento está en su posición original. */
-    50% { transform: translateY(-10px); } /* 50%: sube 10 píxeles hacia arriba (translateY(-10px)).*/
-    100% { transform: translateY(0px); } /* 100%: vuelve a su posición original. */
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
