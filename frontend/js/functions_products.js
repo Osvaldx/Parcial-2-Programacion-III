@@ -38,6 +38,7 @@ const showProduct = (ElementShow, productList) => {
             <img src="${product.imagen}" alt="[!] Img product">
             <h3>${product.nombre}</h3>
             <p>$${product.precio}</p>
+            <button>Agregar al carrito</button>
         </li>`
     }
 
