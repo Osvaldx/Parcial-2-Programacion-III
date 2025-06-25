@@ -1,8 +1,8 @@
 /////////////////////////
 // VARIABLES GLOBALS //
 ////////////////////////
-let skateListElement = document.getElementById("list");
-let rollerListElement;
+let skateListElement = document.getElementById("list-skate");
+let rollerListElement = document.getElementById("list-rollers");
 
 
 ///////////////
@@ -50,6 +50,9 @@ const showAllProducts = async () => {
     // let rollerProductList = generateListProducts("ROLLER");
 
     showProduct(skateListElement, skateProductList);
+    let rollerProductList = await generateListProducts("ROLLER");
+
+    showProduct(rollerListElement, rollerProductList);
 }
 
 const Init = () => {
