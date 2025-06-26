@@ -4,6 +4,7 @@ import connection from "./src/api/database/db.js";
 import cors from "cors";
 import validations from "./src/api/validations/serverValidations.js"
 import morgan from "morgan";
+import parametersValidation from "./src/api/validations/serverValidations.js";
 
 const app = express();
 const PORT = environments.port;
@@ -59,7 +60,7 @@ try {
         let { nombre, imagen, precio, categoria, activo } = req.body
         let sql = `INSERT INTO productos (nombre, imagen, precio, categoria, activo) VALUES (?, ?, ?, ?, ?)`
 
-        let results = validations.parametersValidation(nombre, imagen, precio, categoria);
+        let results = parametersValidation(nombre, imagen, precio, categoria, activo);
         if(!results.allow) {
             return res.status(404).json({
                 error: results.message
@@ -102,36 +103,26 @@ try {
     console.log("Error: " + error)
 }
 // ------------------------------------------------------------------------------------------ //
+// UPDATE PRODUCT
 try {
-    app.put("/modifiedProduct/:id/:param/:value", async(req, res) => {
-        let { id, param, value } = req.params;
+    app.post("/updateProduct", async(req, res) => {
+        let { id_product, nombre, imagen, precio, categoria, activo } = req.body;
 
-        if(!validations.isParameter(param)){
-            return res.status(404).json({
-                error: "[!] Parametro a modificar no valido"
-            });
+        let results = parametersValidation(nombre,imagen,precio,categoria,activo);
+        if(!results.allow) {
+            return res.status(400).json({
+                error_message: results.message
+            })
         }
 
-        if(!value) {
-            return res.status(404).json({
-                error: "[!] El valor del parametro no puede ser null o vacio"
-            });
-        }
+        let sql = `UPDATE productos SET nombre = ?, imagen = ?, precio = ?, categoria = ?, activo = ? WHERE id_product = ?`
+        let [rows] = await connection.query(sql, [nombre,imagen,precio,categoria,activo,id_product]);
 
-        let sql = `UPDATE productos SET ${param} = ? WHERE id_product = ?`
-        let [rows] = await connection.query(sql, [value,id])
+        return res.status(200).json({
+            message: (rows.affectedRows === 0) ? "[!] No se encontro un producto con ese ID" : "[+] Producto actualizado con exito!"
+        })
 
-        if(rows.affectedRows === 0) {
-            return res.status(404).json({
-                message: "[!] No se pudo modificar el producto"
-            });
-        } else {
-            return res.status(200).json({
-                message: "[+] Producto modificado"
-            });
-        }
-    })
-
+    });
 } catch (error) {
     res.status(500).json({error: "[!] ERROR INTERNO DEL SERVIDOR"})
     console.log("Error: " + error)
