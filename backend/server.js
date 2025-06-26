@@ -9,48 +9,63 @@ import parametersValidation from "./src/api/validations/serverValidations.js";
 const app = express();
 const PORT = environments.port;
 
+//MIDDLEWARES
+
 app.use(cors()); // MIDDLEWARE basico para permitir solicitudes
 app.use(express.json()); // MIDDLEWARE PARA PODER RECIBIR COSAS DEL BODY EN EL POST
 app.use(morgan("dev")) // MIDDLEWARE para registrar los metodos http
 
+const validateID = (req, res, next) => {
+    const { id } = req.params
+    if (!id) {
+        return res.status(400).json({
+            message: "[!] ERROR el ID no puede ser vacio."
+        })
+    }
+    
+    req.id = parseInt(id, 10);
+    next();
+}
+
+
 // ------------------------------------------------------------------------------------------ //
 // GET PRODUCTS
-try {
-    app.get("/products", async(req, res) => {
-        let sql = "SELECT * FROM productos"
-        const [rows] = await connection.query(sql);
-        
-        res.status(200).json({
-            payload: rows,
-            message: (rows.length === 0) ? "[-] No se encontraron productos" : "[+] Productos encontrados"
-        })
-    })
-} 
-catch(error) {
-    res.status(500).json({error: "[!] Error interno del servidor al obtener productos"})
-    console.log("Error: " + error)
-}
+app.get("/products", async(req, res) => {
+    try {
+            let sql = "SELECT * FROM productos"
+            const [rows] = await connection.query(sql);
+            
+            res.status(200).json({
+                payload: rows,
+                message: (rows.length === 0) ? "[-] No se encontraron productos" : "[+] Productos encontrados"
+            })
+        }
+    catch(error) {
+        res.status(500).json({error: "[!] Error interno del servidor al obtener productos"})
+        console.log("Error: " + error)
+    }
+})
 // ------------------------------------------------------------------------------------------ //
 
 // ------------------------------------------------------------------------------------------ //
 // GET PRODUCT ID
+
 try {
-    
-    app.get("/products/:id", async(req,res) => {
-        let sql = "SELECT * FROM productos WHERE id_product = ?" //-> se usa ? pq al poner el parametro "id" es vulnerable a sqlinjections
-        let { id } = req.params  //-> desestructuracion a un objeto
-        const [rows] = await connection.query(sql, [id]);
+    app.get("/products/:id",validateID, async(req,res) => {
+            let sql = "SELECT * FROM productos WHERE id_product = ?" //-> se usa ? pq al poner el parametro "id" es vulnerable a sqlinjections
+            let { id } = req.params  //-> desestructuracion a un objeto
+            const [rows] = await connection.query(sql, [id]);
 
-        res.status(200).json({
-            payload: rows,
-            message: (rows.length === 0) ? "[-] No se encontro producto con ese ID" : "[+] Producto encontrado"
+            res.status(200).json({
+                payload: rows,
+                message: (rows.length === 0) ? "[-] No se encontro producto con ese ID" : "[+] Producto encontrado"
+            })
         })
-    })
 
-} catch (error) {
-    res.status(500).json({error: "[!] Error interno del servidor al obtener productos"})
-    console.log("Error: " + error)
-}
+    } catch (error) {
+        res.status(500).json({error: "[!] Error interno del servidor al obtener productos"})
+        console.log("Error: " + error)
+    }
 // ------------------------------------------------------------------------------------------ //
 
 // ------------------------------------------------------------------------------------------ //
@@ -82,7 +97,7 @@ try {
 // ------------------------------------------------------------------------------------------ //
 // DELETE PRODUCT
 try {
-    app.delete("/deleteproduct/:id", async(req, res) => {
+    app.delete("/deleteproduct/:id",validateID, async(req, res) => {
         let { id } = req.params;
         let sql = "DELETE FROM productos WHERE id_product = ?";
         let [rows] = await connection.query(sql, [id]);
