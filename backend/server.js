@@ -85,6 +85,7 @@ try {
 // DELETE PRODUCT
 try {
     app.delete("/deleteproduct/:id", async(req, res) => {
+        console.log(`   DELETE ./deleteproduct`)
         let { id } = req.params;
         let sql = "DELETE FROM productos WHERE id_product = ?";
         let [rows] = await connection.query(sql, [id]);
@@ -107,6 +108,7 @@ try {
 // ------------------------------------------------------------------------------------------ //
 try {
     app.put("/modifiedProduct/:id/:param/:value", async(req, res) => {
+        console.log(`   PUT ./modifiedProduct`)
         let { id, param, value } = req.params;
 
         if(!validations.isParameter(param)){
