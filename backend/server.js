@@ -3,20 +3,19 @@ import environments from "./src/api/config/environments.js";
 import connection from "./src/api/database/db.js";
 import cors from "cors";
 import validations from "./src/api/validations/serverValidations.js"
+import morgan from "morgan";
 
 const app = express();
 const PORT = environments.port;
 
-// CORS basico para permitir solicitudes
-app.use(cors());
+app.use(cors()); // MIDDLEWARE basico para permitir solicitudes
 app.use(express.json()); // MIDDLEWARE PARA PODER RECIBIR COSAS DEL BODY EN EL POST
-
+app.use(morgan("dev")) // MIDDLEWARE para registrar los metodos http
 
 // ------------------------------------------------------------------------------------------ //
 // GET PRODUCTS
 try {
     app.get("/products", async(req, res) => {
-        console.log(`   GET ./products`)
         let sql = "SELECT * FROM productos"
         const [rows] = await connection.query(sql);
         
@@ -37,7 +36,6 @@ catch(error) {
 try {
     
     app.get("/products/:id", async(req,res) => {
-        console.log(`   GET ./products/id`)
         let sql = "SELECT * FROM productos WHERE id_product = ?" //-> se usa ? pq al poner el parametro "id" es vulnerable a sqlinjections
         let { id } = req.params  //-> desestructuracion a un objeto
         const [rows] = await connection.query(sql, [id]);
@@ -58,7 +56,6 @@ try {
 // INSERT PRODUCT
 try {
     app.post("/addproduct", async(req, res) => {
-        console.log(`   POST ./addproduct`)
         let { nombre, imagen, precio, categoria, activo } = req.body
         let sql = `INSERT INTO productos (nombre, imagen, precio, categoria, activo) VALUES (?, ?, ?, ?, ?)`
 
@@ -85,7 +82,6 @@ try {
 // DELETE PRODUCT
 try {
     app.delete("/deleteproduct/:id", async(req, res) => {
-        console.log(`   DELETE ./deleteproduct`)
         let { id } = req.params;
         let sql = "DELETE FROM productos WHERE id_product = ?";
         let [rows] = await connection.query(sql, [id]);
@@ -108,7 +104,6 @@ try {
 // ------------------------------------------------------------------------------------------ //
 try {
     app.put("/modifiedProduct/:id/:param/:value", async(req, res) => {
-        console.log(`   PUT ./modifiedProduct`)
         let { id, param, value } = req.params;
 
         if(!validations.isParameter(param)){
