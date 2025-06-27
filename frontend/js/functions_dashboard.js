@@ -9,27 +9,29 @@ const getProductsApi = async() => {
 
 
 const showProducts = async() => {
-
     const listProducts = await getProductsApi()
-    const productViews = ""
+    let productViews = ""
 
     for (let i = 0; i < listProducts.length; i++) {
         const product = listProducts[i];
-        productViews += `<li class="style-products">
-            <div class = "image-box">
-            <img src="${product.imagen}" alt="[!] Img product">          
-            </div>
-            <h3>${product.id}</h3>
-            <h3>${product.nombre}</h3>
-            <p>$${product.precio}</p>
-        </li>`
-        
+        let allow = (product.activo) ? "SI" : "NO"; 
+
+        productViews += `<li class="card-product">
+                    <div class="img-box">
+                        <img src="${product.imagen}" alt="">
+                    </div>
+                    <h3>ID: ${product.id_product}</h3>
+                    <h4>${product.nombre}</h4>
+                    <p>$${product.precio}</p>
+                    <p>ACTIVO: <strong>${allow}</strong></p>
+                </li>`
     }
 
-    ulListProducts.innerHTML = productViews
+    ulListProducts.innerHTML = productViews;
 }
 
 function init() {
-    
+    showProducts();
 }
 
+init();
