@@ -4,6 +4,10 @@
     font-family: Montserrat;
 }
 
+body{
+    background-color: #999;
+}
+
 #menu {
     background-color: #111827;
     color: #F9FAFB;
@@ -74,7 +78,7 @@ a:hover {
 }
 
 .card-product {
-    background-color: #ddd;
+    background-color: white;
     border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
