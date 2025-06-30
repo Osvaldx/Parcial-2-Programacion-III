@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+body{
+    background-color: #999;
+}
+
+#menu {
+    background-color: #111827;
+    color: #F9FAFB;
+    display: flex;
+    font-size: 15px;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 5rem;
+}
+
+.dash {
+    display: flex;
+    flex-direction: column;
+    margin: 0.7rem;
+}
+
+.options-menu {
+    display: flex;
+}
+
+a {
+    display: block;
+    color: #d1d5db;
+    text-decoration: none;
+    margin: 5px 0;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+#logoadmin {
+    width: 150px;
+}
+
+.text-menu-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #334155;
+    color: #f97316;
+}
+
+.text-section {
+    text-align: center;
+    color: #f97416d5;
+    border-top: 2px solid #f97316;
+    border-bottom: 2px solid #f97316;
+    padding: 5px;
+}
+
+#text-menu {
+    color: #f59e0b;
+    font-size: 20px;
+    margin: 5px;
+}
+
+#menu-selected {
+    font-weight: bold;
+}
+
+#products {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-searchProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 0.8rem;
+    background-color: #334155;
+    width: 20%;
+    border-radius: 10px;
+}
+
+#title-form {
+    font-size: larger;
+    color: white;
+}
+
+#input-id-form {
+    font-size: medium;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#btn-form {
+    font-size: medium;
+    font-weight: bold;
+    background-color: #f97316;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#list-products {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.card-product {
+    background-color: white;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #f59e0b;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.card-product img {
+    width: 15vw;
+}
+
+.img-box {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.img-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* se usa para no deformar la imagen y que quepa toda entera en la box */
+}
