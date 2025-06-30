@@ -1,6 +1,7 @@
 // VARIABLES GLOBALES
 const ElementListProducts = document.getElementById("list-products");
 const ElementFormSearch = document.getElementById("form-searchProduct");
+const ElementInputForm = document.getElementById("input-id-form");
 
 
 // FUNCIONES
@@ -12,16 +13,36 @@ const getProductID = async(idProduct) => {
     return data;
 }
 
+const changeColorInput = (input) => {
+    input.style.color = "#cc4343";
+    input.style.borderBlockColor = "#cc4343";
+    alert("[!] ERROR. Porfavor Ingrese un numero")
+    setTimeout(() => {
+        input.style.color = "black";
+        input.style.borderBlockColor = "rgb(107, 107, 107)";
+    }, 2000);
+}
+
+const validateID = (idProduct) => {
+    const regEx = new RegExp("^[0-9]+$")
+    return regEx.test(idProduct);
+}
+
 const showProductHTML = async(event) => {
     event.preventDefault();
 
     let formData = new FormData(event.target);
     let data = Object.fromEntries(formData.entries());
+
+    if(!validateID(data.idProduct)) {
+        changeColorInput(ElementInputForm);
+        return
+    }
+
     let query = await getProductID(data.idProduct);
     let cardProduct = "";
     
     if(query.payload.length > 0){
-        console.log("HOLA")
         let listProduct = query.payload;
         for(let i=0; i < listProduct.length; i++){
             let product = listProduct[i];
