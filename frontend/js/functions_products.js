@@ -31,7 +31,7 @@ cardRollers.addEventListener("click", function() {
 
 
 const getProductsAPI = async () => {
-    let response = await fetch("http://localhost:3000/products");
+    let response = await fetch("http://localhost:3000/api/products");
     let data = await response.json();
 
     return data;
