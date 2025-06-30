@@ -13,20 +13,7 @@ app.use(express.json()); // MIDDLEWARE PARA PODER RECIBIR COSAS DEL BODY EN EL P
 app.use(morgan("dev")) // MIDDLEWARE para registrar los metodos http
 
 // ------------------------------------------------------------------------------------------ //
-// GET PRODUCTS
 app.use("/api", productRouter);
-// ------------------------------------------------------------------------------------------ //
-// GET PRODUCT ID
-app.get("/api", productRouter);
-// ------------------------------------------------------------------------------------------ //
-// INSERT PRODUCT
-app.post("/api", productRouter);
-// ------------------------------------------------------------------------------------------ //
-// DELETE PRODUCT
-app.delete("/api", productRouter);
-// ------------------------------------------------------------------------------------------ //
-// UPDATE PRODUCT
-app.post("/api", productRouter);
 // ------------------------------------------------------------------------------------------ //
 
 app.listen(PORT, () => {
