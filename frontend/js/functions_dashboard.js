@@ -1,7 +1,7 @@
 let ulListProducts = document.getElementById("list-products")
 
 const getProductsApi = async() => {
-    const data = await fetch("http://localhost:3000/products")
+    const data = await fetch("http://localhost:3000/api/products")
                         .then(response => response.json())
 
     return data.payload
