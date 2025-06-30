@@ -7,7 +7,6 @@ const getProductsApi = async() => {
     return data.payload
 }
 
-
 const showProducts = async() => {
     const listProducts = await getProductsApi()
     let productViews = ""
