@@ -42,6 +42,3 @@ export const parametersValidation = (nombre,imagen,precio,categoria, activo) => 
     
     return result
 }
-
-
-
