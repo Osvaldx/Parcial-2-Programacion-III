@@ -68,3 +68,12 @@ a:hover {
 #menu-selected {
     font-weight: bold;
 }
+
+#form-addProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #334155;
+    padding: 1rem;
+}
