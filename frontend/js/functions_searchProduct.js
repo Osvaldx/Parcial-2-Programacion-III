@@ -31,8 +31,8 @@ const validateID = (idProduct) => {
 const showProductHTML = async(event) => {
     event.preventDefault();
 
-    let formData = new FormData(event.target);
-    let data = Object.fromEntries(formData.entries());
+    let formData = new FormData(event.target); // Lee los datos del form y los devuelve
+    let data = Object.fromEntries(formData.entries()); // Convierte el FormData en objeto js
 
     if(!validateID(data.idProduct)) {
         changeColorInput(ElementInputForm);
