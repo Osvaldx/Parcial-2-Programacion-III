@@ -8,7 +8,6 @@ let productSkate = document.getElementById("products-skates")
 let cardRollers = document.getElementById("go-rollers")
 let productRoller = document.getElementById("products-roller")
 
-
 ///////////////
 // EVENTS //
 ///////////////
@@ -23,12 +22,9 @@ cardRollers.addEventListener("click", function() {
     
 })
 
-
 ///////////////
 // FUNCTIONS //
 ///////////////
-
-
 
 const getProductsAPI = async () => {
     let response = await fetch("http://localhost:3000/api/products");
