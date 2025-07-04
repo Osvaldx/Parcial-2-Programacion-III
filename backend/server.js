@@ -32,6 +32,18 @@ app.get("/searchProduct", (req, res) => {
     res.render("searchProduct");
 })
 
+app.post("/addProduct", (req, res) => {
+    res.render("addProduct");
+})
+
+app.put("/updateProduct", (req, res) => {
+    res.render("updateProduct");
+})
+
+app.delete("/deleteProduct", (req, res) => {
+    res.render("deleteProduct");
+})
+
 // ------------------------------------------------------------------------------------------ //
 app.use("/api", productRouter);
 // ------------------------------------------------------------------------------------------ //
