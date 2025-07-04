@@ -3,6 +3,20 @@
 <body>
     <main>
         <%- include("partials/nav") %>
+        <section id="products">
+            <ul id="list-products">
+                <% products.forEach(product => {%>
+                <li class="style-products">
+                    <div class = "image-box">
+                        <img src="<%- product.imagen %>" alt="<%- product.nombre %>">
+                    </div>
+                    <h3><%- product.nombre %></h3>
+                    <p>$<%- product.precio %></p>
+                    <button>Agregar al carrito</button>
+                </li>`
+                <% }) %>
+            </ul>
+        </section>
     </main>
 </body>
 <script src="js/functions_dashboard.js"></script>
