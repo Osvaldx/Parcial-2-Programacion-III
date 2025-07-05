@@ -55,9 +55,3 @@ const showResultsAddProduct = async(event) => {
 
 // EVENTOS
 ElementFormSearch.addEventListener("submit", showResultsAddProduct);
-
-// INICIALIZADOR
-const Init = () => {
-}
-
-Init();
