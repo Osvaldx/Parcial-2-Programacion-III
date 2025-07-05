@@ -3,6 +3,18 @@
 }
 
 .option-selected:nth-child(3) {
+    font-weight: normal;
+}
+
+.option-selected:nth-child(4) {
+    font-weight: normal;
+}
+
+.option-selected:nth-child(5) {
+    font-weight: normal;
+}
+
+.option-selected:nth-child(6) {
     font-weight: bold;
 }
 
