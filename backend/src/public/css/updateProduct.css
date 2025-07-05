@@ -1,0 +1,49 @@
+.option-selected:nth-child(2) {
+  font-weight: normal;
+}
+
+.option-selected:nth-child(3) {
+  font-weight: normal;
+}
+
+.option-selected:nth-child(4) {
+    font-weight: normal;
+}
+
+.option-selected:nth-child(5) {
+  font-weight: bold;
+}
+
+#btn-modifiedProduct {
+    background-color: #f97316;
+    color: white;
+    font-weight: bold;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+}
+
+#btn-modifiedProduct:hover {
+    transform: scale(1.02);
+}
+
+#btn-modifiedProduct:active {
+    transform: scale(0.9);
+}
+
+#form-updateProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #334155;
+    border-radius: 10px;
+}
+
+#input-form {
+    padding: 5px;
+}
