@@ -5,15 +5,14 @@ const ElementInputForm = document.getElementById("input-id-form");
 
 
 // FUNCIONES
-const getProductID = async(idProduct) => {
+export const getProductID = async(idProduct) => {
     let data = await fetch(`http://localhost:3000/api/products/${idProduct}`)
     .then(response => response.json())
-    console.log(data);
     
     return data;
 }
 
-const changeColorInput = (input) => {
+export const changeColorInput = (input) => {
     input.style.color = "#cc4343";
     input.style.borderBlockColor = "#cc4343";
     alert("[!] ERROR. Porfavor Ingrese un numero")
@@ -23,7 +22,7 @@ const changeColorInput = (input) => {
     }, 2000);
 }
 
-const validateID = (idProduct) => {
+export const validateID = (idProduct) => {
     const regEx = new RegExp("^[0-9]+$")
     return regEx.test(idProduct);
 }
@@ -71,9 +70,3 @@ const showProductHTML = async(event) => {
 
 // EVENTOS
 ElementFormSearch.addEventListener("submit", showProductHTML);
-
-// INICIALIZADOR
-const Init = () => {
-}
-
-Init();
