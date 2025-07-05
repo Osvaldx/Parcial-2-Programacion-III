@@ -138,8 +138,7 @@ const showFormModified = (event) => {
     let product = JSON.parse(btn.dataset.product);
     let cardProduct = `
         <form id="form-updateProduct">
-            <label for="id_product" id="title-form"><strong>ID DEL PRODUCTO:</strong></label>
-            <input name="id_product" type="text" id="input-form" value="${product.id_product}" readonly>    
+            <input name="id_product" type="hidden" id="input-form" value="${product.id_product}" readonly>    
 
             <label for="nombre" id="title-form"><strong>NOMBRE DEL PRODUCTO:</strong></label>
             <input name="nombre" type="text" id="input-form" value="${product.nombre}" placeholder="Ingrese el nombre del producto..." autocomplete="off">
