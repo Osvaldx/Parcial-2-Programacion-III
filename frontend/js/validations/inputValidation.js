@@ -1,4 +1,3 @@
-
 const changeColorInput = (input) => {
     input.style.color = "#cc4343";
     input.style.borderBlockColor = "#cc4343";
@@ -22,6 +21,7 @@ function nameValidate() {
         changeColorInput(input);
         return
     }
-
+    
+    sessionStorage.setItem("username", nameInput);
     window.location.href = "pages/client/products.html";
 }
