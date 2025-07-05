@@ -67,7 +67,6 @@ const showProduct = (ElementShow, productList) => {
 
 const showAllProducts = async () => {
     let skateProductList = await generateListProducts("SKATE");
-    // let rollerProductList = generateListProducts("ROLLER");
 
     showProduct(skateListElement, skateProductList);
     let rollerProductList = await generateListProducts("ROLLER");
@@ -75,7 +74,15 @@ const showAllProducts = async () => {
     showProduct(rollerListElement, rollerProductList);
 }
 
+const validateUsername = () => {
+    let username = sessionStorage.getItem("username");
+    if(!username) { // Nan, Undefined, "", Empty
+        window.location.href = "../../index.html"
+    }
+}
+
 const Init = () => {
+    validateUsername();
     showAllProducts();
 }
 
