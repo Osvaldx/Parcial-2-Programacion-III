@@ -18,15 +18,16 @@
                 <label for="categoryProduct" id="title-form"><strong>CATEGORIA DEL PRODUCTO:</strong></label>
                 <input name="categoryProduct" type="text" id="input-form" placeholder="Ingrese la categoria del producto..." autocomplete="off">
                 
-                <label for="activeProduct" id="title-form"><strong>SE MOSTRARA EN LA WEB?</strong>
-                    <input name="activeProduct" type="radio" id="input-form"  value="si">
-                    SI
-                </label>
-
-                <label for="activeProduct" id="title-form">
-                    <input name="activeProduct" type="radio" id="input-form"  value="no">
-                    NO
-                </label>                
+                <p id="title-form"><strong>SE MOSTRARA EN LA WEB?</strong></p>
+                <div>
+                    <label for="activo" id="title-form">
+                    <input name="activo" type="radio" id="input-form-active" value="si" checked>SI
+                    </label>
+                
+                    <label for="activo" id="title-form">
+                        <input name="activo" type="radio" id="input-form-active" value="no">NO
+                    </label>
+                </div>               
                 <button type="submit" id="btn-form">AGREGAR</button>
             </form>
 
