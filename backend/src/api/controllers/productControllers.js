@@ -1,4 +1,4 @@
-import parametersValidation from "../validations/serverValidations.js";
+import parametersValidation from "../validations/productsParameterValidations.js";
 import Products from "../models/product.models.js";
 
 export const getProducts = async(req, res) => {
