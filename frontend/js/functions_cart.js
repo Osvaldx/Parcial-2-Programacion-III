@@ -1,9 +1,9 @@
 let itemsCart = document.getElementById("items-cart")
-let cart = JSON.parse(localStorage.getItem("cart"))
+let buttonClear = document.getElementById("clear")
+let cart = JSON.parse(localStorage.getItem("cart")) || []
 
 const showCart = () => {
     let showCartProduct = ""
-    console.log(cart)
     for (let i = 0; i < cart.length; i++) {
         let p = cart[i];
         showCartProduct += `
@@ -58,7 +58,12 @@ let showQuantity = () => {
         });
     })    
 }
-    
+
+buttonClear.addEventListener("click", () => {
+    localStorage.removeItem("cart")
+    cart = []
+    showCart()
+})
 
 
 const Init = () => {
