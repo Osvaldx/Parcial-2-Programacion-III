@@ -7,6 +7,7 @@ let cardSkate = document.getElementById("go-skates")
 let productSkate = document.getElementById("products-skates")
 let cardRollers = document.getElementById("go-rollers")
 let productRoller = document.getElementById("products-roller")
+let cart = []
 
 ///////////////
 // EVENTS //
@@ -25,6 +26,22 @@ cardRollers.addEventListener("click", function() {
 ///////////////
 // FUNCTIONS //
 ///////////////
+
+
+// agregar carrito
+
+const addCart = async(id) => {
+    let allProducts = await getProductsAPI()
+    let product = allProducts['payload'].find(product => product.id_product === id)
+    if (product) {
+        cart.push(product)
+    }else{
+        alert("ERROR")
+    }
+    localStorage.setItem("cart", JSON.stringify(cart))
+
+    console.log(cart)
+}
 
 const getProductsAPI = async () => {
     let response = await fetch("http://localhost:3000/api/products");
@@ -58,7 +75,7 @@ const showProduct = (ElementShow, productList) => {
             </div>
             <h3>${product.nombre}</h3>
             <p>$${product.precio}</p>
-            <button>Agregar al carrito</button>
+            <button onclick='addCart(${product.id_product})'>Agregar al carrito</button>
         </li>`
     }
 
@@ -84,6 +101,15 @@ const validateUsername = () => {
 const Init = () => {
     validateUsername();
     showAllProducts();
+
+    const cartStored = JSON.parse(localStorage.getItem("cart")) //Pasamos el String a objeto 
+    // y obtenemos el valor guardado bajo la clave "carrito"
+
+    if (cartStored) { //si existe el carrito guardado
+        cart = cartStored //reemplazamos la variable global "carrito" por el carrito recuperado del localStorag
+        //  y restauramos el estado del carrito al cargar la pagina
+        console.log(cart)
+    }
 }
 
 Init()
