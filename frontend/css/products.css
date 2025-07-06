@@ -105,9 +105,9 @@
 /* ========== PRODUCTOS ========== */
 #products-skates, #products-roller {
     margin: 2rem;
-    height: 100vh;
+    min-height: auto;
+    padding-bottom: 1rem;
 }
-
 
 #list-skate, #list-rollers{
     display: flex;
@@ -119,25 +119,20 @@
     margin: 0.8rem;
     list-style-type: none;
     animation: fadeInUp 0.8s ease-out both;
-    /* ease-out → curva de velocidad: empieza rápido y termina suave
-    both → indica que la animación aplica tanto antes de empezar como después de terminar */
-    animation-timeline: view(); /*Es para que la animación se active cuando el elemento entra en la pantalla (scroll trigger).*/
-    animation-range: entry 0% cover 40%; /*Controla cuándo empieza la animación, mientras se va viendo en pantalla.*/
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
 
 @keyframes fadeInUp {
     from {
-        opacity: 0; /*Empieza transparente, no se ve*/
-        transform: translateY(20px) scale(0.9); /*empieza 20px más abajo (como que "sube" cuando aparece).
-        scale(0.9); → empieza un poquito más chiquito.*/
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
     }
     to {
-        opacity: 1; /*Termina visible*/
-        transform: translateY(0) scale(1); /*vuelve a su posición normal (sin desplazamiento).
-        scale(1); → vuelve a tamaño normal. */
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
-
 
 .style-products {
     width: 250px;
@@ -181,12 +176,11 @@
 .image-box img {
     max-height: 100%;
     max-width: 100%;
-    object-fit: contain; /* se usa para no deformar la imagen y que quepa toda entera en la box */
+    object-fit: contain;
 }
 
-
 .style-products:hover {
-    transform: translateY(-5px); /*sube un poco la box */
+    transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -223,9 +217,255 @@
     animation: float 2s infinite ease-in-out;
 }
 
-/* Animación simple */
 @keyframes float {
     0%   { transform: translateY(0); }
     50%  { transform: translateY(-10px); }
     100% { transform: translateY(0); }
+}
+
+#welcome-user {
+    color: #ccc;
+    animation: colorChange 4s infinite ease-in-out;
+}
+
+@keyframes colorChange {
+    0%   { color: #FF7F11; }
+    25%  { color: #FF9F1C; }
+    50%  { color: #FFB347; }
+    75%  { color: #FF6F3C; }
+    100% { color: #FF8C42; }
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablets grandes(768px - 1024px) */
+@media(max-width: 1024px) {
+    .header img {
+        width: 8%;
+    }
+    
+    .card-skate, .card-rollers {
+        width: 30%;
+        min-width: 200px;
+    }
+    
+    .style-products {
+        width: 220px;
+        height: 380px;
+    }
+    
+    .banner-scroll .banner-content p {
+        font-size: 1.3rem;
+    }
+    
+    .banner-scroll .icons img {
+        width: 50px;
+    }
+}
+
+
+/* Tablets (481px - 768px) */
+@media screen and (max-width: 768px) {
+    .header {
+        margin: 15px;
+        gap: 8px;
+    }
+    
+    .header img {
+        width: 10%;
+    }
+    
+    .btns-section {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .btns-section a {
+        font-size: 14px;
+    }
+    
+    #text-categories {
+        margin-top: 2rem;
+    }
+    
+    #card-categories {
+        margin-top: 2rem;
+        gap: 15px;
+    }
+    
+    .card-skate, .card-rollers {
+        width: 40%;
+        min-width: 160px;
+        padding: 1.5rem 0;
+    }
+    
+    .card-skate img, .card-rollers img {
+        max-height: 150px;
+    }
+    
+    #products-skates, #products-roller {
+        margin: 1.5rem;
+    }
+    
+    .style-products {
+        width: 200px;
+        height: 360px;
+    }
+    
+    .image-box {
+        height: 220px;
+    }
+    
+    .banner-scroll {
+        margin: 20px 0;
+        padding: 15px;
+    }
+    
+    .banner-scroll .banner-content p {
+        font-size: 1.2rem;
+    }
+    
+    .banner-scroll .icons {
+        gap: 20px;
+    }
+    
+    .banner-scroll .icons img {
+        width: 45px;
+    }
+}
+
+/* Celulares grandes (321px - 480px) */
+@media (max-width: 480px) {
+    .msg-discount h3 {
+        font-size: 13px;
+        padding: 3px;
+    }
+    
+    .header {
+        margin: 10px;
+        gap: 5px;
+    }
+    
+    .header img {
+        width: 12%;
+    }
+    
+    .btns-section {
+        flex-direction: column;
+        gap: 5px;
+        padding: 6px;
+    }
+    
+    .btns-section a {
+        font-size: 13px;
+    }
+    
+    #text-categories {
+        margin-top: 1.5rem;
+        font-size: 14px;
+    }
+    
+    #card-categories {
+        margin-top: 1.5rem;
+        gap: 10px;
+        flex-direction: column;
+    }
+    
+    .card-skate, .card-rollers {
+        width: 80%;
+        min-width: 250px;
+        padding: 1rem 0;
+    }
+    
+    .card-skate img, .card-rollers img {
+        max-height: 120px;
+    }
+    
+    #products-skates, #products-roller {
+        margin: 1rem;
+    }
+    
+    #list-skate, #list-rollers {
+        gap: 10px;
+        padding: 0 10px;
+        margin: 0.5rem;
+    }
+    
+    .style-products {
+        width: 180px;
+        height: 340px;
+        padding: 0.4rem;
+    }
+    
+    .image-box {
+        height: 200px;
+    }
+    
+    .style-products button {
+        padding: 4px;
+        font-size: 12px;
+    }
+    
+    .banner-scroll {
+        margin: 15px 0;
+        padding: 12px;
+    }
+    
+    .banner-scroll .banner-content p {
+        font-size: 1rem;
+    }
+    
+    .banner-scroll .icons {
+        gap: 15px;
+    }
+    
+    .banner-scroll .icons img {
+        width: 40px;
+    }
+}
+
+/* Celulares chicos (hasta 320px) */
+@media (max-width: 320px) {
+    .msg-discount h3 {
+        font-size: 12px;
+    }
+    
+    .header img {
+        width: 15%;
+    }
+    
+    .btns-section a {
+        font-size: 12px;
+    }
+    
+    #text-categories {
+        font-size: 13px;
+    }
+    
+    .card-skate, .card-rollers {
+        width: 90%;
+        min-width: 200px;
+    }
+    
+    .card-skate img, .card-rollers img {
+        max-height: 100px;
+    }
+    
+    .style-products {
+        width: 160px;
+        height: 320px;
+    }
+    
+    .image-box {
+        height: 180px;
+    }
+    
+    .banner-scroll .banner-content p {
+        font-size: 0.9rem;
+    }
+    
+    .banner-scroll .icons img {
+        width: 35px;
+    }
 }
