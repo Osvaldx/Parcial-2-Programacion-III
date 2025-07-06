@@ -39,3 +39,20 @@ export const deleteAdminAccount = async(req, res) => {
         message: (rows.length == 0) ? `[!] NO SE PUDO ELIMINAR LA CUENTA CON ID: ${id}` : `[+] LA CUENTA ID ${id} SE ELIMINO CON EXITO!`
     })
 }
+
+export const checkAdminAccount = async(req, res) => {
+    let { username, password } = req.body;
+    let result = adminValidations.parametersValidation(null, username, password);
+
+    if(!result.allow) {
+        return res.status(400).json({
+            message: result.message
+        })
+    }
+
+    let [rows] = await Admins.checkAdmin(username, password);
+
+    res.status(200).json({
+        exitsAccount: (rows.length == 0) ? false : true
+    })
+}
