@@ -8,6 +8,7 @@ let productSkate = document.getElementById("products-skates")
 let cardRollers = document.getElementById("go-rollers")
 let productRoller = document.getElementById("products-roller")
 let cart = []
+let quantity = 0
 
 ///////////////
 // EVENTS //
@@ -27,20 +28,20 @@ cardRollers.addEventListener("click", function() {
 // FUNCTIONS //
 ///////////////
 
-
 // agregar carrito
 
 const addCart = async(id) => {
+    console.log(id)
     let allProducts = await getProductsAPI()
     let product = allProducts['payload'].find(product => product.id_product === id)
-    if (product) {
-        cart.push(product)
+    let productCart = cart.find(p => p.id_product === id)
+    if (productCart) {
+        productCart.quantity += 1
     }else{
-        alert("ERROR")
+        product.quantity = 1;
+        cart.push(product)
     }
     localStorage.setItem("cart", JSON.stringify(cart))
-
-    console.log(cart)
 }
 
 const getProductsAPI = async () => {
@@ -75,10 +76,9 @@ const showProduct = (ElementShow, productList) => {
             </div>
             <h3>${product.nombre}</h3>
             <p>$${product.precio}</p>
-            <button onclick='addCart(${product.id_product})'>Agregar al carrito</button>
+            <button onclick="addCart(${product.id_product})">Agregar al carrito</button>
         </li>`
     }
-
     ElementShow.innerHTML = productsViews;
 }
 
@@ -108,7 +108,6 @@ const Init = () => {
     if (cartStored) { //si existe el carrito guardado
         cart = cartStored //reemplazamos la variable global "carrito" por el carrito recuperado del localStorag
         //  y restauramos el estado del carrito al cargar la pagina
-        console.log(cart)
     }
 }
 
