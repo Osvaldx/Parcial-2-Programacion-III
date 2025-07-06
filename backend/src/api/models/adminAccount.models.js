@@ -12,7 +12,14 @@ const deleteAdmin = async (id) => {
     return await connection.query(sql, [id]);
 }
 
+const checkAdmin = async(username, password) => {
+    let sql = "SELECT * FROM usuarios_admin WHERE (nombre = ?) AND (contraseña = ?)"
+
+    return await connection.query(sql, [username, password]);
+}
+
 export default {
     createAdmin,
     deleteAdmin,
+    checkAdmin
 }
