@@ -1,4 +1,4 @@
-const parametersValidation = (correo,nombre,contraseña) => {
+const parametersValidation = (correo = null,nombre,contraseña) => {
     const regExCorreo = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"); // regex para validar el correo
     const regExNombre = new RegExp("^[a-zA-Z0-9]+$");
     let result = {
@@ -6,10 +6,12 @@ const parametersValidation = (correo,nombre,contraseña) => {
         message: ""
     }
 
-    if(!regExCorreo.test(correo) || !correo) {
-        result.allow = false;
-        result.message = "[!] Correo no valido o vacio";
-        return result;
+    if(!correo == null) {
+        if(!regExCorreo.test(correo) || !correo) {
+            result.allow = false;
+            result.message = "[!] Correo no valido o vacio";
+            return result;
+        }
     }
     
     if(!regExNombre.test(nombre) || !nombre) {
