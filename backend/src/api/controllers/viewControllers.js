@@ -28,3 +28,11 @@ export const updateProductView = async (req, res) => {
 export const deleteProductView = async (req, res) => {
     res.render("deleteProduct");
 }
+
+export const createAdminView = async (req, res) => {
+    res.render("createAdmin");
+}
+
+export const deleteAdminView = async (req, res) => {
+    res.render("deleteAdmin");
+}
