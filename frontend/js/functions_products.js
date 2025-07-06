@@ -7,6 +7,7 @@ let cardSkate = document.getElementById("go-skates")
 let productSkate = document.getElementById("products-skates")
 let cardRollers = document.getElementById("go-rollers")
 let productRoller = document.getElementById("products-roller")
+let welcomeUser = document.getElementById("welcome-user")
 let cart = []
 let quantity = 0
 
@@ -95,6 +96,8 @@ const validateUsername = () => {
     let username = sessionStorage.getItem("username");
     if(!username) { // Nan, Undefined, "", Empty
         window.location.href = "../../index.html"
+    }else{
+        welcomeUser.innerHTML = `Hola ${username}`
     }
 }
 
