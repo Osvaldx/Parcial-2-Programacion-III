@@ -18,8 +18,15 @@ const checkAdmin = async(username, password) => {
     return await connection.query(sql, [username, password]);
 }
 
+const getAdmins = async() => {
+    let sql = "SELECT id_admin,correo,nombre FROM usuarios_admin"
+
+    return await connection.query(sql);
+}
+
 export default {
     createAdmin,
     deleteAdmin,
-    checkAdmin
+    checkAdmin,
+    getAdmins
 }
