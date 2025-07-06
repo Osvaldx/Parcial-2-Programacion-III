@@ -69,6 +69,12 @@ body {
     color: grey;
 }
 
+.quantity-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 
