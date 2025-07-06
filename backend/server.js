@@ -2,7 +2,7 @@ import express from "express";
 import environments from "./src/api/config/environments.js";
 import cors from "cors";
 import morgan from "morgan";
-import { productRouter, viewRouter } from "./src/api/routes/index.js";
+import { productRouter, viewRouter, adminRouter } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js";
 
 const app = express();
@@ -24,10 +24,14 @@ app.use(express.json()); // MIDDLEWARE PARA PODER RECIBIR COSAS DEL BODY EN EL P
 app.use(morgan("dev")) // MIDDLEWARE para registrar los metodos http
 
 // VISTAS
+// ------------------------------------------------------------------------------------------ //
 app.use("/dashboard", viewRouter);
+// ------------------------------------------------------------------------------------------ //
 
 // ------------------------------------------------------------------------------------------ //
 app.use("/api", productRouter);
+// ------------------------------------------------------------------------------------------ //
+app.use("/api", adminRouter);
 // ------------------------------------------------------------------------------------------ //
 
 app.listen(PORT, () => {
