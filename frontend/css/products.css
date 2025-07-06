@@ -190,6 +190,11 @@
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
+.style-products button:active {
+    transition: 0.1s;
+    background-color: red;
+}
+
 /* ========== BANNER SCROLL ========== */
 .banner-scroll {
     background: linear-gradient(to right, #f0f0f0, #e0e0e0);
