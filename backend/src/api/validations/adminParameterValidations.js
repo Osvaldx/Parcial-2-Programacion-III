@@ -6,7 +6,7 @@ const parametersValidation = (correo = null,nombre,contraseña) => {
         message: ""
     }
 
-    if(!correo == null) {
+    if(correo != null) {
         if(!regExCorreo.test(correo) || !correo) {
             result.allow = false;
             result.message = "[!] Correo no valido o vacio";
