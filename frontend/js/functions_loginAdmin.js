@@ -37,8 +37,7 @@ const login = async(event) => {
         alert("[!] No existe un usuario con esas credenciales")
         return
     }
-    sessionStorage.setItem("isAdmin", true);
-    sessionStorage.setItem("username", data.usuario);
+
     window.location.replace("http://localhost:3000/dashboard")
 }
 
