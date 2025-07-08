@@ -1,4 +1,5 @@
 import Products from "../models/product.models.js";
+import Admin from "../models/adminAccount.models.js"
 
 export const listView = async (req, res) => {
     try {
@@ -9,7 +10,7 @@ export const listView = async (req, res) => {
         });
     }
     catch(error) {
-
+        res.status(500).send(`Error interno del servidor`) 
     }
 }
 
@@ -34,5 +35,13 @@ export const createAdminView = async (req, res) => {
 }
 
 export const deleteAdminView = async (req, res) => {
-    res.render("deleteAdmin");
+    try {
+        const listAdmins = await Admin.getAdmins();
+        
+        res.render("deleteAdmin", {
+            admins: listAdmins[0]
+        });
+    } catch (error) {
+        res.status(500).send(`Error interno del servidor`) 
+    }
 }
