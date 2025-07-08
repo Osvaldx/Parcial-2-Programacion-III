@@ -1,12 +1,21 @@
 <%- include("partials/head") %>
 </head>
-<main>
-    <%- include("partials/nav") %>
-    <section>
-        <form action="">
-            <label for="" id="title-form"><strong>ID PRODUCTO:</strong></label>
-            <input name="" type="text" id="input-id-form" placeholder="Ingrese el ID del producto..." autocomplete="off">
-            <button type="submit" id="btn-form">Buscar</button>
-        </form>
-    </section>
-</main>
+<body>
+    <main>
+        <%- include("partials/nav") %>
+        <section>
+            <ul id="list-admins">
+                <% admins.forEach(admin => {%>
+                <li class="card-admin">
+                    <h3>ID: <%- admin.id_admin %></h3>
+                    <p>EMAIL: <%- admin.correo %></p>
+                    <p>NOMBRE: <%- admin.nombre %></p>
+                    <button class="deleteAdminButton" data-id_admin= <%- admin.id_admin %>>Eliminar admin</button>
+                </li>
+                <% }) %>
+            </ul>
+            </form>
+        </section>
+    </main>
+    <script src="/js/functions_deleteAdmin.js" type="module"></script>
+</body>
