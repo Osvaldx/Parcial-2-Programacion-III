@@ -70,16 +70,19 @@ const showProduct = (ElementShow, productList) => {
     
     for(let i = 0; i < productList.length; i++) {
         let product = productList[i];
-        productsViews += `
-        <li class="style-products">
-            <div class = "image-box">
-            <img src="${product.imagen}" alt="[!] Img product">          
-            </div>
-            <h3>${product.nombre}</h3>
-            <p>$${product.precio}</p>
-            <button onclick="addCart(${product.id_product})">Agregar al carrito</button>
-        </li>`
+        if(product.activo) {
+            productsViews += `
+            <li class="style-products">
+                <div class = "image-box">
+                <img src="${product.imagen}" alt="[!] Img product">          
+                </div>
+                <h3>${product.nombre}</h3>
+                <p>$${product.precio}</p>
+                <button onclick="addCart(${product.id_product})">Agregar al carrito</button>
+            </li>`
+        }
     }
+    
     ElementShow.innerHTML = productsViews;
 }
 
