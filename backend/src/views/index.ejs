@@ -6,18 +6,18 @@
         <section id="products">
             <ul id="list-products">
                 <% products.forEach(product => {%>
-                <li class="style-products">
-                    <div class = "image-box">
+                <li class="card-product">
+                    <div class = "img-box">
                         <img src="<%- product.imagen %>" alt="<%- product.nombre %>">
                     </div>
                     <h3><%- product.nombre %></h3>
                     <p>$<%- product.precio %></p>
-                    <button>Agregar al carrito</button>
-                </li>`
+                    <p>ACTIVO: <strong><%- (product.activo) ? "SI" : "NO" %></strong></p>
+                </li>
                 <% }) %>
             </ul>
         </section>
     </main>
 </body>
-<script src="js/functions_dashboard.js"></script>
+<script src=""></script>
 <%- include("partials/footer") %>
