@@ -1,5 +1,5 @@
-import { getProductID, changeColorInput, validateID } from "/js/functions_searchProduct.js";
-import { parametersValidation } from "/js/parametersValidations.js";
+import { getProductID, changeColorInput } from "/js/functions_searchProduct.js";
+import { parametersValidation, validateID } from "/js/parametersValidations.js";
 
 // VARIABLES GLOBALES
 const ElementListProducts = document.getElementById("list-products");
