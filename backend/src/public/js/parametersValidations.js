@@ -42,3 +42,8 @@ export const parametersValidation = (nombre,imagen,precio,categoria, activo) => 
     
     return result
 }
+
+export const validateID = (idProduct) => {
+    const regEx = new RegExp("^[0-9]+$")
+    return regEx.test(idProduct);
+}
