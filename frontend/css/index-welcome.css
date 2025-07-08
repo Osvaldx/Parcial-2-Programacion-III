@@ -125,3 +125,140 @@ video {
     text-decoration: none;
     color: inherit;
 }
+
+/* Media Queries */
+
+/* Tablets y pantallas medianas (768px - 1024px) */
+@media(max-width: 1024px) {
+    .box-login {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+    
+    #name-input {
+        width: 70%;
+        font-size: 16px;
+    }
+    
+    .box-data-login button {
+        font-size: 16px;
+        padding: 0.7rem 1rem;
+    }
+}
+
+/* Tablets chiquitas (481px - 768px) */
+@media(max-width: 768px) {
+    .box-login {
+        padding: 1.5rem;
+        max-width: 95%;
+        margin: 0 1rem;
+    }
+    
+    .box-login h1 {
+        font-size: 1.5rem;
+    }
+    
+    .box-login p {
+        font-size: 0.9rem;
+    }
+    
+    #name-input {
+        width: 80%;
+        padding: 0.5rem;
+        font-size: 16px;
+    }
+    
+    .box-data-login {
+        gap: 25px;
+    }
+    
+    .box-data-login button {
+        padding: 0.7rem 1.5rem;
+        font-size: 16px;
+        width: 60%;
+    }
+    
+    .btn-admin {
+        bottom: 15px;
+        right: 15px;
+        font-size: 11px;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Celulares (320px - 480px) */
+@media(max-width: 480px) {
+    .box-login {
+        padding: 1rem;
+        max-width: 90%;
+        margin: 0 5%;
+        border-radius: 8px;
+    }
+    
+    .box-login h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .box-login p {
+        font-size: 0.85rem;
+    }
+    
+    .box-data-login {
+        margin: 0.5rem;
+        gap: 20px;
+    }
+    
+    #name-input {
+        width: 90%;
+        padding: 0.6rem;
+        font-size: 16px;
+    }
+    
+    .box-data-login button {
+        padding: 0.8rem 1rem;
+        font-size: 16px;
+        width: 70%;
+    }
+    
+    .btn-admin {
+        bottom: 10px;
+        right: 10px;
+        font-size: 10px;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* Celulares muy chiquitos (menos de 320px) */
+@media(max-width: 320px) {
+    .box-login {
+        padding: 0.8rem;
+        max-width: 95%;
+        margin: 0 2.5%;
+    }
+    
+    .box-login h1 {
+        font-size: 1.2rem;
+    }
+    
+    .box-login p {
+        font-size: 0.8rem;
+    }
+    
+    #name-input {
+        width: 95%;
+        padding: 0.5rem;
+    }
+    
+    .box-data-login button {
+        width: 80%;
+        padding: 0.7rem;
+    }
+    
+    .btn-admin {
+        bottom: 8px;
+        right: 8px;
+        font-size: 9px;
+        padding: 0.25rem 0.5rem;
+    }
+}
