@@ -106,3 +106,137 @@ body {
   max-width: 100%;
   object-fit: contain; /* Para no deformar la imagen */
 }
+
+/* Media Queries */
+/* Tablets */
+@media (max-width: 768px) {
+  #menu {
+    gap: 1rem;
+    padding: 0.5rem;
+    font-size: 14px;
+  }
+  
+  .dash {
+    min-width: 150px;
+    margin: 0.5rem;
+  }
+  
+  #logoadmin {
+    width: 120px;
+  }
+  
+  #text-menu {
+    font-size: 18px;
+  }
+  
+  #list-products {
+    gap: 1rem;
+    padding: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .card-product {
+    width: 280px;
+    padding: 15px;
+  }
+  
+  .card-product img {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .img-box {
+    height: 220px;
+  }
+  
+  .img-box img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  #menu {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    font-size: 13px;
+  }
+  
+  .dash {
+    min-width: 100%;
+    margin: 0.3rem;
+  }
+  
+  #logoadmin {
+    width: 100px;
+  }
+  
+  #text-menu {
+    font-size: 16px;
+  }
+  
+  #list-products {
+    gap: 0.8rem;
+    padding: 10px;
+  }
+  
+  .card-product {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px;
+  }
+  
+  .card-product img {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .img-box {
+    height: 200px;
+  }
+  
+  .img-box img {
+    width: 160px;
+    height: 160px;
+  }
+  
+  a {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Celulares muy chiquitos */
+@media (max-width: 320px) {
+  #menu {
+    font-size: 12px;
+  }
+  
+  #logoadmin {
+    width: 80px;
+  }
+  
+  #text-menu {
+    font-size: 14px;
+  }
+  
+  .card-product {
+    padding: 10px;
+  }
+  
+  .card-product img {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .img-box {
+    height: 180px;
+  }
+  
+  .img-box img {
+    width: 140px;
+    height: 140px;
+  }
+}

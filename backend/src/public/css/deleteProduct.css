@@ -59,3 +59,88 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* Media Queries */
+/* Tablets */
+@media (max-width: 768px) {
+  #products {
+    padding: 1.5rem;
+  }
+  
+  #form-deleteProduct {
+    width: 60%;
+    min-width: 280px;
+    padding: 1.2rem;
+  }
+  
+  #title-form {
+    font-size: 1.1rem;
+  }
+  
+  #input-id-form {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  #btn-form {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  #products {
+    padding: 1rem;
+  }
+  
+  #form-deleteProduct {
+    width: 90%;
+    min-width: 250px;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  #title-form {
+    font-size: 1rem;
+  }
+  
+  #input-id-form {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.8rem;
+  }
+  
+  #btn-form {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 320px) {
+  #products {
+    padding: 0.8rem;
+  }
+  
+  #form-deleteProduct {
+    width: 95%;
+    min-width: 200px;
+    padding: 0.8rem;
+  }
+  
+  #title-form {
+    font-size: 0.9rem;
+  }
+  
+  #input-id-form {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+  
+  #btn-form {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+}
