@@ -91,7 +91,7 @@ const returnCheckedActive = (activo) => {
 
 const updateProductAPI = async (product) => {
     let response = await fetch("http://localhost:3000/api/products/update", {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },

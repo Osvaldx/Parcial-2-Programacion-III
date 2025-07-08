@@ -22,7 +22,7 @@ router.post("/products/add", insertProduct);
 router.delete("/products/delete/:id",middlewares.validateID, deleteProduct);
 // ------------------------------------------------------------------------------------------ //
 // UPDATE PRODUCT
-router.post("/products/update", updateProduct);
+router.put("/products/update", updateProduct);
 // ------------------------------------------------------------------------------------------ //
 
 export default router;
