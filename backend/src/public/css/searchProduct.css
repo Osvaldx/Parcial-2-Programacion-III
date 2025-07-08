@@ -47,3 +47,140 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+#products {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#form-searchProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.8rem;
+  background-color: #334155;
+  width: 20%;
+  min-width: 300px;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+#title-form {
+  font-size: larger;
+  color: white;
+}
+
+#input-id-form {
+  font-size: medium;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+#btn-form {
+  font-size: medium;
+  font-weight: bold;
+  background-color: #f97316;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#btn-form:hover {
+  background-color: #ea580c;
+}
+
+/* Media Queries */
+/* Tablets */
+@media (max-width: 768px) {
+  #products {
+    padding: 1.5rem;
+  }
+  
+  #form-searchProduct {
+    width: 60%;
+    min-width: 280px;
+    padding: 1.2rem;
+  }
+  
+  #title-form {
+    font-size: 1.1rem;
+  }
+  
+  #input-id-form {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  #btn-form {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  #products {
+    padding: 1rem;
+  }
+  
+  #form-searchProduct {
+    width: 90%;
+    min-width: 250px;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  #title-form {
+    font-size: 1rem;
+  }
+  
+  #input-id-form {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.8rem;
+  }
+  
+  #btn-form {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 320px) {
+  #products {
+    padding: 0.8rem;
+  }
+  
+  #form-searchProduct {
+    width: 95%;
+    min-width: 200px;
+    padding: 0.8rem;
+  }
+  
+  #title-form {
+    font-size: 0.9rem;
+  }
+  
+  #input-id-form {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+  
+  #btn-form {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+}
