@@ -28,8 +28,8 @@ const login = async(event) => {
         return
     }
     let credentials = {
-        "username": data.usuario,
-        "password": data.contraseña
+        "nombre": data.usuario,
+        "contraseña": data.contraseña
     }
     
     let json = await sendDataAPI(credentials);
