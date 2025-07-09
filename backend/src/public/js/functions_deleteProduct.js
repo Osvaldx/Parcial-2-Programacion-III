@@ -9,7 +9,7 @@ const deleteProductAPI = async(idProduct) => {
     return response
 }
 
-let showDeleteProduct = async(event) => {
+const showDeleteProduct = async(event) => {
     event.preventDefault();
 
     let formData = new FormData(event.target); // Lee los datos del form y los devuelve

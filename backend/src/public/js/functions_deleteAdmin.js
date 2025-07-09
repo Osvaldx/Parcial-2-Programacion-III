@@ -11,7 +11,7 @@ const deleteAdminAPI = async(id) => {
     return response
 }
 
-let deleteAdmin = async(event) => {
+const deleteAdmin = async(event) => {
     const btn = event.target
     let id_admin = btn.dataset.id_admin
 

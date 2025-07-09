@@ -7,7 +7,7 @@ const listProduct = document.getElementById("list-products")
 
 // Funciones
 
-let addProductAPI = async(product) => {
+const addProductAPI = async(product) => {
     let response = await fetch("http://localhost:3000/api/products/add", {
         method: "POST",
         headers: {
