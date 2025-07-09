@@ -42,7 +42,7 @@ const addCart = async(id) => {
         product.quantity = 1;
         cart.push(product)
     }
-    localStorage.setItem("cart", JSON.stringify(cart))
+    sessionStorage.setItem("cart", JSON.stringify(cart))
 }
 
 const getProductsAPI = async () => {
@@ -108,7 +108,7 @@ const Init = () => {
     validateUsername();
     showAllProducts();
 
-    const cartStored = JSON.parse(localStorage.getItem("cart")) //Pasamos el String a objeto 
+    const cartStored = JSON.parse(sessionStorage.getItem("cart")) //Pasamos el String a objeto 
     // y obtenemos el valor guardado bajo la clave "carrito"
 
     if (cartStored) { //si existe el carrito guardado
