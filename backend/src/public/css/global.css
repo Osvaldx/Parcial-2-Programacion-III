@@ -107,6 +107,37 @@ body {
   object-fit: contain; /* Para no deformar la imagen */
 }
 
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    color: #ccc;
+    padding: 1rem;
+}
+
+#links {
+    display: flex;
+    gap: 1rem; /* Espacio entre íconos */
+    justify-content: center; /* Centrar horizontal */
+    align-items: center;/* Centrar vertical */
+    padding: 1rem;
+}
+
+#links a {
+    color: #ccc;/* Color del ícono */
+    font-size: 2rem; /* Tamaño del ícono */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#links a:hover {
+    color: #007bff; /* Color al pasar el mouse */
+}
+
+
+
 /* Media Queries */
 /* Tablets */
 @media (max-width: 768px) {
@@ -152,6 +183,23 @@ body {
   .img-box img {
     width: 180px;
     height: 180px;
+  }
+
+   /* Footer responsive para tablets */
+  footer {
+    padding: 1.5rem 1rem;
+  }
+  
+  #links {
+    gap: 1.5rem;
+  }
+  
+  #links a {
+    font-size: 1.8rem;
+  }
+  
+  footer h4 {
+    font-size: 0.9rem;
   }
 }
 
@@ -206,6 +254,25 @@ body {
     padding: 6px 8px;
     font-size: 12px;
   }
+
+  /* Footer responsive para celulares */
+  footer {
+    padding: 1rem 0.5rem;
+  }
+  
+  #links {
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  #links a {
+    font-size: 1.5rem;
+  }
+  
+  footer h4 {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
 }
 
 /* Celulares muy chiquitos */
@@ -238,5 +305,24 @@ body {
   .img-box img {
     width: 140px;
     height: 140px;
+  }
+
+  /* Footer responsive para celulares muy chiquitos */
+  footer {
+    padding: 0.8rem 0.3rem;
+  }
+  
+  #links {
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  #links a {
+    font-size: 1.3rem;
+  }
+  
+  footer h4 {
+    font-size: 0.7rem;
+    line-height: 1.3;
   }
 }
