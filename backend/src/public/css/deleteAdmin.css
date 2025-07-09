@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+#list-admins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+}
+
+.card-admin {
+    background-color: #334155;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.card-admin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card-admin h3 {
+    font-size: 18px;
+    color: #f97316;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-admin p {
+    font-size: 14px;
+    color: #e2e8f0;
+    margin-bottom: 0.3rem;
+}
+
+.deleteAdminButton {
+    background-color: #f97316;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    font-size: 14px;
+}
+
+.deleteAdminButton:hover {
+    transform: scale(1.05);
+    background-color: #ea580c;
+}
+
+.deleteAdminButton:active {
+    transform: scale(0.95);
+}
+
+.deleteAdminButton:focus {
+    outline: 2px solid #f97316;
+    outline-offset: 2px;
+}
+
+
