@@ -16,13 +16,13 @@ router.get("/products", getProducts);
 router.get("/products/:id",middlewares.validateID, getProductID);
 // ------------------------------------------------------------------------------------------ //
 // INSERT PRODUCT
-router.post("/products/add", insertProduct);
+router.post("/products/add",middlewares.parametersProductsValidation, insertProduct);
 // ------------------------------------------------------------------------------------------ //
 // DELETE PRODUCT
 router.delete("/products/delete/:id",middlewares.validateID, deleteProduct);
 // ------------------------------------------------------------------------------------------ //
 // UPDATE PRODUCT
-router.put("/products/update", updateProduct);
+router.put("/products/update",middlewares.parametersProductsValidation, updateProduct);
 // ------------------------------------------------------------------------------------------ //
 
 export default router;

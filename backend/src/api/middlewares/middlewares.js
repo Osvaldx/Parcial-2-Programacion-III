@@ -1,8 +1,10 @@
 const validateID = (req, res, next) => {
+    const regEx = new RegExp("^[0-9]+$")
     const { id } = req.params
-    if (!id) {
+
+    if (!regEx.test(id) || !id) {
         return res.status(400).json({
-            message: "[!] ERROR el ID no puede ser vacio."
+            message: "[!] ERROR el ID no es valido."
         })
     }
     
@@ -77,9 +79,77 @@ const validateSaleOfProducts = (req, res, next) => {
     next();
 }
 
+const parametersAdminValidation = (req, res, next) => {
+    const regExCorreo = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"); // regex para validar el correo
+    const regExNombre = new RegExp("^[a-zA-Z0-9]+$");
+
+    let { correo, nombre, contraseña } = req.body;
+
+    if(correo != null) {
+        if(!regExCorreo.test(correo) || !correo) {
+            return res.status(404).json({
+                message: "[!] Correo no valido o vacio"
+            })
+        }
+    }
+    
+    if(!regExNombre.test(nombre) || !nombre) {
+        return res.status(404).json({
+            message: "[!] Nombre no valido o vacio"
+        })
+    }
+
+    if(!contraseña) {
+        return res.status(404).json({
+            message: "[!] La contraseña no puede estar vacia"
+        })
+    }
+
+    next();
+}
+
+const parametersProductsValidation = (req, res, next) => {
+    const regEx = new RegExp("^https://[a-zA-Z0-9].{3,}")
+    let { nombre,imagen,precio,categoria, activo } = req.body;
+
+    if(!nombre || !imagen || !precio || !categoria){
+        return res.status(404).json({
+            message: "[!] Debe completarse todos los campos"
+        })
+    }
+
+    if(!regEx.test(imagen)) {
+        return res.status(404).json({
+            message: "[!] La imagen no respeta el formato o esta vacio"
+        })
+    }
+
+    if(precio < 0) {
+        return res.status(404).json({
+            message: "[!] El precio no puede ser negativo"
+        })
+    }
+
+    if(categoria != "SKATE" && categoria != "ROLLER") {
+        return res.status(404).json({
+            message: "[!] La categoria no es correcta"
+        })
+    }
+
+    if(activo != true && activo != false) {
+        return res.status(404).json({
+            message: "[!] El activo no es un booleano"
+        })
+    }
+
+    next();
+}
+
 export default {
     validateID,
     validateName,
     validateSale,
-    validateSaleOfProducts
+    validateSaleOfProducts,
+    parametersAdminValidation,
+    parametersProductsValidation
 }

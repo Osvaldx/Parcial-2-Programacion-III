@@ -7,10 +7,10 @@ const router = Router();
 
 router.get("/admin/getAllAdmins", getAllAdminAccounts);
 
-router.post("/admin/checkAdmin", checkAdminAccount);
+router.post("/admin/checkAdmin",middlewares.parametersAdminValidation, checkAdminAccount);
 
-router.post("/admin/createAccount", createAdminAccount);
+router.post("/admin/createAccount",middlewares.parametersAdminValidation, createAdminAccount);
 
-router.delete("/admin/deleteAccount/:id", deleteAdminAccount);
+router.delete("/admin/deleteAccount/:id",middlewares.validateID, deleteAdminAccount);
 
 export default router;
