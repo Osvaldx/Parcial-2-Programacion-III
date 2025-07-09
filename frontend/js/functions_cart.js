@@ -2,6 +2,9 @@ let itemsCart = document.getElementById("items-cart")
 let cart = JSON.parse(sessionStorage.getItem("cart")) || []
 let totalCart = document.getElementById("total-cart")
 
+
+// ----------------MOSTRAR CARRITO-----------------------
+
 const showCart = () => {
     let showCartProduct = ""
     if (cart.length === 0) {
@@ -34,6 +37,8 @@ const showCart = () => {
     showTotal()
 }
 
+// ----------------MOSTRAR CANTIDAD-----------------------
+
 const showQuantity = () => {
     let quantitySpan = document.querySelectorAll('.quantity');
     quantitySpan.forEach(span => {
@@ -62,11 +67,15 @@ const showQuantity = () => {
     showTotal()    
 }
 
+// ----------------VACIAR CARRITO-----------------------
+
 const clearCart = () => {
     sessionStorage.removeItem("cart")
     cart = []
     showCart()
 }
+
+// ----------------MOSTRAR EL TOTAL-----------------------
 
 const showTotal = () => {
     let total = 0
@@ -74,11 +83,14 @@ const showTotal = () => {
     cart.forEach(product => {
         total += (product.precio * product.quantity)
     })
+
+    const name = sessionStorage.getItem("username")
+
     view += `
     <section id = "total">
         <div id = "cart-summary">
             <h3>TOTAL: $${total}</h3>
-            <button id="confirmPurchase">Confirmar compra</button>
+            <button id="confirmPurchase" data-cliente-nombre=${name}>Confirmar compra</button>
             </div>
             <div>
             <button onclick = "clearCart()" id="clear">Vaciar carrito</button>
@@ -89,7 +101,10 @@ const showTotal = () => {
     totalCart.innerHTML = view;
     const btnConfirmPurchase = document.getElementById("confirmPurchase");
     btnConfirmPurchase.addEventListener("click", cartConfirm);
+    btnConfirmPurchase.addEventListener("click", registerClient);
 }
+
+// ----------------BOTON BORRAR PRODUCTO-----------------------
 
 const deleteProduct = (id) => {
     let product = cart.find(product => product.id_product === id)
@@ -102,6 +117,8 @@ const deleteProduct = (id) => {
         showTotal()
     }
 }
+
+// ----------------TICKET DE LA COMPRA-----------------------
 
 const cartConfirm = () => {
     if(cart.length == 0) {
@@ -134,6 +151,37 @@ const cartConfirm = () => {
     setTimeout(() => {
         window.location.href = "../../index.html";
     }, 5000);
+
+
+}
+
+// ----------------REGISTRAR CLIENTE-----------------------
+
+const registerClientAPI = async(data) => {
+
+    let response = await fetch(`http://localhost:3000/api/cliente/registrarCliente`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    return response
+}
+
+const registerClient = async(event) => {
+    const btn = event.target
+    let clienteNombre = btn.dataset.clienteNombre
+
+    let response = await registerClientAPI({nombre: clienteNombre})
+
+    if (response.ok) {
+        alert("Cliente registrado con exito")
+        clearCart()
+    }else{
+        alert("ERROR AL REGISTRAR EL CLIENTE")
+    }
 }
 
 const Init = () => {
