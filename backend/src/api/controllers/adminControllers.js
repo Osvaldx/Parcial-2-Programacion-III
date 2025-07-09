@@ -5,13 +5,14 @@ export const createAdminAccount = async(req, res) => {
     try {
         let { correo,nombre,contraseña } = req.body;
 
+        // --- pasar a middleware
         let result = adminValidations.parametersValidation(correo,nombre,contraseña);
         if(!result.allow) {
             return res.status(400).json({
                 error: result.message
             })
         }
-
+        // -----------------------------
         const [rows] = await Admins.createAdmin(correo,nombre,contraseña);
         res.status(200).json({
             message: (rows.length == 0) ? "[!] NO SE PUDO CREAR LA CUENTA" : "[+] CUENTA CREADA CON EXITO!"
@@ -27,12 +28,14 @@ export const createAdminAccount = async(req, res) => {
 
 export const deleteAdminAccount = async(req, res) => {
     try {
+        // --- pasar a middleware
         let { id } = req.params;
         if(!adminValidations.ValidateID(id)) {
             return res.status(400).json({
                 message: "[!] ID no valida"
             })
         }
+        // -------------------------
         
         let [rows] = await Admins.deleteAdmin(id);
         
@@ -49,6 +52,7 @@ export const deleteAdminAccount = async(req, res) => {
 
 export const checkAdminAccount = async(req, res) => {
     try {
+        // --- pasar a middleware
         let { username, password } = req.body;
         let result = adminValidations.parametersValidation(null, username, password);
     
@@ -57,7 +61,7 @@ export const checkAdminAccount = async(req, res) => {
                 message: result.message
             })
         }
-    
+        // -------------------------
         let [rows] = await Admins.checkAdmin(username, password);
     
         res.status(200).json({
