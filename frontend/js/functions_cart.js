@@ -29,12 +29,9 @@ const showCart = () => {
         `
     } 
     
-    
     itemsCart.innerHTML = showCartProduct;
     showQuantity()
     showTotal()
-    
-
 }
 
 const showQuantity = () => {
@@ -90,6 +87,8 @@ const showTotal = () => {
     `
 
     totalCart.innerHTML = view;
+    const btnConfirmPurchase = document.getElementById("confirmPurchase");
+    btnConfirmPurchase.addEventListener("click", cartConfirm);
 }
 
 const deleteProduct = (id) => {
@@ -104,9 +103,42 @@ const deleteProduct = (id) => {
     }
 }
 
+const cartConfirm = () => {
+    if(cart.length == 0) {
+        alert("TU CARRITO ESTA VACIO")
+        return
+    }
+
+    const { jsPDF } = window.jspdf;
+
+    // Creamos una nueva instancia del documento PDF usando la clase jsPDF
+    const doc = new jsPDF()
+
+    let y = 10;
+
+    doc.setFontSize(14);
+    doc.text("TICKET DE COMPRA - SkateSports", 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+
+    let totalTicket = 0;
+    cart.forEach(product => {
+        doc.text(`[NOMBRE]: ${product.nombre} - [CANTIDAD]: ${product.quantity} - [PRECIO x UNIDAD]: $${product.precio}`, 10, y)
+        totalTicket += (parseInt(product.precio) * parseInt(product.quantity));
+        y+= 10;
+    });
+    doc.text(`[TOTAL DE LA COMPRA]: $${totalTicket}`, 10, y);
+
+    doc.save("TICKET-COMPRA-SKATESPORT.pdf");
+    setTimeout(() => {
+        window.location.href = "../../index.html";
+    }, 5000);
+}
 
 const Init = () => {
     showCart()
+    console.log(cart)
 }
 
 Init()
