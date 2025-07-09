@@ -2,7 +2,7 @@ import express from "express";
 import environments from "./src/api/config/environments.js";
 import cors from "cors";
 import morgan from "morgan";
-import { productRouter, viewRouter, adminRouter } from "./src/api/routes/index.js";
+import { productRouter, viewRouter, adminRouter, clientRouter, ventaRouter } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js";
 
 const app = express();
@@ -32,6 +32,10 @@ app.use("/dashboard", viewRouter);
 app.use("/api", productRouter);
 // ------------------------------------------------------------------------------------------ //
 app.use("/api", adminRouter);
+// ------------------------------------------------------------------------------------------ //
+app.use("/api", clientRouter);
+// ------------------------------------------------------------------------------------------ //
+app.use("/api", ventaRouter)
 // ------------------------------------------------------------------------------------------ //
 
 app.listen(PORT, () => {
