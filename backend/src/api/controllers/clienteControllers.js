@@ -4,7 +4,7 @@ export const registerClient = async(req, res) => {
     try {
         const { nombre } = req.body;
 
-        let [rows] = await Cliente.registerClientDB(nombre);
+        const [rows] = await Cliente.registerClientDB(nombre);
 
         if(rows.affectedRows > 0) {
             res.status(200).json({
