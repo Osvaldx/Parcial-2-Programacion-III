@@ -34,12 +34,15 @@ export const getProductID = async(req,res) => {
 export const insertProduct = async(req, res) => {
     try {
         let { nombre, imagen, precio, categoria, activo } = req.body
+
+        // --- pasar a middleware
         let results = parametersValidation(nombre, imagen, precio, categoria, activo);
         if(!results.allow) {
             return res.status(404).json({
                 error: results.message
             })
         }
+        // ---------------------------------
 
         const [rows] = await Products.insertNewProduct(nombre, imagen, precio, categoria, activo);
         
@@ -76,13 +79,14 @@ export const updateProduct = async(req, res) => {
     try {
         let { id_product, nombre, imagen, precio, categoria, activo } = req.body;
 
+        // --- pasar a middleware
         let results = parametersValidation(nombre,imagen,precio,categoria,activo);
         if(!results.allow) {
             return res.status(400).json({
                 error_message: results.message
             })
         }
-
+        // -------------------------------
         let [rows] = await Products.updateProductFromID(nombre,imagen,precio,categoria,activo,id_product);
 
         return res.status(200).json({
