@@ -1,5 +1,5 @@
 let itemsCart = document.getElementById("items-cart")
-let cart = JSON.parse(localStorage.getItem("cart")) || []
+let cart = JSON.parse(sessionStorage.getItem("cart")) || []
 let totalCart = document.getElementById("total-cart")
 
 const showCart = () => {
@@ -37,7 +37,7 @@ const showCart = () => {
 
 }
 
-let showQuantity = () => {
+const showQuantity = () => {
     let quantitySpan = document.querySelectorAll('.quantity');
     quantitySpan.forEach(span => {
         let index = Number(span.dataset.index);
@@ -49,7 +49,7 @@ let showQuantity = () => {
         minusBtn.addEventListener('click', () => {
             if (product.quantity > 1) {
                 product.quantity--;
-                localStorage.setItem("cart", JSON.stringify(cart));
+                sessionStorage.setItem("cart", JSON.stringify(cart));
                 showCart();
             }
         });
@@ -58,20 +58,20 @@ let showQuantity = () => {
         let plusBtn = block.querySelector('.plus');
         plusBtn.addEventListener('click', () => {
             product.quantity++;
-            localStorage.setItem("cart", JSON.stringify(cart));
+            sessionStorage.setItem("cart", JSON.stringify(cart));
             showCart();
         });
     })
     showTotal()    
 }
 
-let clearCart = () => {
-    localStorage.removeItem("cart")
+const clearCart = () => {
+    sessionStorage.removeItem("cart")
     cart = []
     showCart()
 }
 
-let showTotal = () => {
+const showTotal = () => {
     let total = 0
     let view = ""
     cart.forEach(product => {
@@ -92,13 +92,13 @@ let showTotal = () => {
     totalCart.innerHTML = view;
 }
 
-let deleteProduct = (id) => {
+const deleteProduct = (id) => {
     let product = cart.find(product => product.id_product === id)
     let index = cart.indexOf(product) // -> da la posicion exacta del producto
 
     if (product) {
         cart.splice(index, 1)
-        localStorage.setItem("cart", JSON.stringify(cart))
+        sessionStorage.setItem("cart", JSON.stringify(cart))
         showCart()
         showTotal()
     }
