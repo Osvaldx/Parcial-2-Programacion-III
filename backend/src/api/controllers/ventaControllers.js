@@ -6,9 +6,17 @@ export const registerSale = async(req, res) => {
 
         const [rows] = await Venta.registerSaleDB(id_cliente, fecha_venta, total);
 
-        res.status(200).json({
-            message: (rows.affectedRows >= 1) ? "[+] Venta registrada con exito!" : "[!] No se pudo registrar la venta"
-        })
+        if(rows.affectedRows > 0) {
+            res.status(200).json({
+                message: "[+] Venta registrada con exito!",
+                id_venta: rows.insertId
+            });
+        } else {
+            res.status(404).json({
+                message: "[!] No se pudo registrar la venta"
+            })
+        }
+
 
     } catch(error) {
         res.status(500).json({
