@@ -175,10 +175,9 @@ const registerClient = async() => {
     
     let response = await registerClientAPI({nombre: clienteNombre})
     let json = await response.json();
-    alert(json.id_cliente)
 
     if (response.ok) {
-        alert("Cliente registrado con exito")
+        alert("VENTA CONFIRMADA")
     }else{
         alert("ERROR AL REGISTRAR EL CLIENTE")
     }
