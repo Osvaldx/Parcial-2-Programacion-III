@@ -149,7 +149,6 @@ const cartConfirm = () => {
     doc.save("TICKET-COMPRA-SKATESPORT.pdf");
     setTimeout(() => {
         window.location.href = "../../index.html";
-        clearCart();
     }, 5000);
     
     registerClient()
@@ -242,6 +241,7 @@ const registerSaleOfProd = async(id_venta) => {
         })
     }
 
+    clearCart();
 }
 
 const Init = () => {
