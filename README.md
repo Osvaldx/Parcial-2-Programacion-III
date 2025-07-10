@@ -93,9 +93,24 @@ frontend/
 - **POST** `/api/admin/createAccount` – Crear administrador
 - **DELETE** `/api/admin/deleteAccount/:id` – Eliminar administrador
 
+### Clientes
+
+- **POST** `/api/cliente/registrarCliente` – Registrar al cliente
+
+### Ventas
+
+- **POST** `/api/venta/registrarVenta` – Registrar la venta realizada por un cliente
+- **POST** `/api/venta/registrarVentaProd` – Registrar todos los productos de la venta realizada
+
 ### Vistas
 
 - `/dashboard` – Panel de administración (EJS)
+- `/dashboard/searchProduct` – Buscar un producto (EJS)
+- `/dashboard/addProduct` – Añadir un producto a la DB (EJS)
+- `/dashboard/updateProduct` – Modificar un producto en la DB (EJS)
+- `/dashboard/deleteProduct` – Eliminar un producto de la DB (EJS)
+- `/dashboard/createAdmin` – Crear un administrador para el dashboard (EJS)
+- `/dashboard/deleteAdmin` – Eliminar un administrador para el dashboard (EJS)
 
 ---
 
